@@ -1,6 +1,8 @@
 ## About The Project
 
-![Screenshot](./currencyExchange.pdf)
+![Issue description](./currencyExchange.pdf)
+
+Project backend part is in [this repo](https://github.com/DovydasTamasauskas/currency-exchange-be).
 
 ### Installation
 
