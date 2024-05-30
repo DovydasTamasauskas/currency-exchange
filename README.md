@@ -23,4 +23,4 @@ Start the project:
 npm start
 ```
 
-Navigate to `http://localhost:3000/` link. You should see currency exchange form. Note [backend](https://github.com/DovydasTamasauskas/currency-exchange) part should be also running.
+Navigate to `http://localhost:3000/` link. You should see currency exchange form. Note [backend](https://github.com/DovydasTamasauskas/currency-exchange-be) part should be also running.
