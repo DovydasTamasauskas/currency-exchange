@@ -29,35 +29,38 @@ const App = () => {
   return (
     <div className="container mt-5 overflow-hidden">
       <Container>
-      <h1 className="text-center mb-4">Currency Exchange</h1>
-      <div className="row gy-3">
-        <div className="col-6 d-flex justify-content-center">
-          <CurrencySelect
-            currencies={supportedCurrencies.filter(
-              (curency) => curency !== quoteCurrency
-            )}
-            onChange={setBaseCurrency}
-            label="BaseCurrency"
-            isDisabled={isLoading}
-          />
+        <h1 className="text-center mb-4">Currency Exchange</h1>
+        <div className="row gy-3">
+          <div className="col-md-6 col-xs-12 d-flex justify-content-center">
+            <CurrencySelect
+              currencies={supportedCurrencies.filter(
+                (curency) => curency !== quoteCurrency
+              )}
+              onChange={setBaseCurrency}
+              label="BaseCurrency"
+              isDisabled={isLoading}
+            />
+          </div>
+          <div className="col-md-6 col-xs-12 d-flex justify-content-center">
+            <CurrencySelect
+              currencies={supportedCurrencies.filter(
+                (curency) => curency !== baseCurrency
+              )}
+              onChange={setQuoteCurrency}
+              label="QuoteCurrency"
+              isDisabled={isLoading}
+            />
+          </div>
+          <div className="col-md-6 col-xs-12 d-flex justify-content-center">
+            <Input onChange={setAmount} isDisabled={isLoading} />
+          </div>
+          <div className="col-md-6 col-xs-12 d-flex justify-content-center">
+            <Button onSubmit={onSubmit} isDisabled={isLoading} />
+          </div>
         </div>
-        <div className="col-6 d-flex justify-content-center">
-          <CurrencySelect
-            currencies={supportedCurrencies.filter(
-              (curency) => curency !== baseCurrency
-            )}
-            onChange={setQuoteCurrency}
-            label="QuoteCurrency"
-            isDisabled={isLoading}
-          />
-        </div>
-        <div className="col-6 d-flex justify-content-center">
-          <Input onChange={setAmount} isDisabled={isLoading} />
-        </div>
-        <div className="col-6 d-flex justify-content-center">
-          <Button onSubmit={onSubmit} isDisabled={isLoading} />
-        </div>
-      </div>
+        <h3 className="text-center mt-5">
+          {amount} {baseCurrency} = {result} {quoteCurrency}
+        </h3>
       </Container>
     </div>
   );
