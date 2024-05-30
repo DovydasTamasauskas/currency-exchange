@@ -1,13 +1,13 @@
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
-export default function CountrySelect({
+const CurrencySelect = ({
   currencies,
   onChange,
 }: {
   currencies: string[];
-  onChange: any;
-}) {
+  onChange: (value: string) => void;
+}) => {
   return (
     <Autocomplete
       sx={{ width: 300 }}
@@ -16,7 +16,11 @@ export default function CountrySelect({
       renderInput={(params) => (
         <TextField {...params} label="Choose a currency" />
       )}
-      onChange={(e, value) => onChange(value)}
+      onChange={(e, value) => {
+        value && onChange(value);
+      }}
     />
   );
-}
+};
+
+export default CurrencySelect;

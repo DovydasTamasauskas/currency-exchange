@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "./fetch";
-import CountrySelect from "./components/SelectList";
+import CurrencySelect from "./components/CurrencySelect";
 import "./App.css";
 
 const App = () => {
@@ -23,11 +23,11 @@ const App = () => {
 
   return (
     <>
-      <CountrySelect
+      <CurrencySelect
         currencies={supportedCurrencies}
         onChange={setBaseCurrency}
       />
-      <CountrySelect
+      <CurrencySelect
         currencies={supportedCurrencies}
         onChange={setQuoteCurrency}
       />
