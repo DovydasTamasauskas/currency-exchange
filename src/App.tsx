@@ -35,7 +35,7 @@ const App = () => {
               (curency) => curency !== quoteCurrency
             )}
             onChange={setBaseCurrency}
-            label={"BaseCurrency"}
+            label="BaseCurrency"
             isDisabled={isLoading}
           />
         </div>
@@ -45,7 +45,7 @@ const App = () => {
               (curency) => curency !== baseCurrency
             )}
             onChange={setQuoteCurrency}
-            label={"QuoteCurrency"}
+            label="QuoteCurrency"
             isDisabled={isLoading}
           />
         </div>
