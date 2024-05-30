@@ -18,7 +18,7 @@ const App = () => {
   }, []);
 
   const onSubmit = () => {
-    if (baseCurrency && quoteCurrency && baseAmount && Number(baseAmount))
+    if (baseCurrency && quoteCurrency && baseAmount && Number(baseAmount)) {
       fetchData(
         (quoteAmount) => {
           setResult(
@@ -29,6 +29,9 @@ const App = () => {
         `exchange?baseCurrency=${baseCurrency}&quoteCurrency=${quoteCurrency}&baseAmount=${baseAmount}`,
         setIsLoading
       );
+    } else {
+      setResult("Incorrect input");
+    }
   };
 
   return (
