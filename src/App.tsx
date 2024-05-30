@@ -31,14 +31,18 @@ const App = () => {
         <div className="row gy-3">
           <div className="col-6 d-flex justify-content-center">
             <CurrencySelect
-              currencies={supportedCurrencies}
+              currencies={supportedCurrencies.filter(
+                (curency) => curency !== quoteCurrency
+              )}
               onChange={setBaseCurrency}
               label={"BaseCurrency"}
             />
           </div>
           <div className="col-6 d-flex justify-content-center">
             <CurrencySelect
-              currencies={supportedCurrencies}
+              currencies={supportedCurrencies.filter(
+                (curency) => curency !== baseCurrency
+              )}
               onChange={setQuoteCurrency}
               label={"QuoteCurrency"}
             />
