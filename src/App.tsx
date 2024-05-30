@@ -13,16 +13,15 @@ const App = () => {
   const [result, setResult] = useState<number>();
 
   useEffect(() => {
-    fetchData((data: any) => {
-      if (data) setSupportedCurrencies(data.currencies);
-    }, `get/supported-currencies`);
+    fetchData(setSupportedCurrencies, `get/supported-currencies`);
   }, []);
 
   const onSubmit = () => {
     if (baseCurrency && quoteCurrency && amount && Number(amount))
-      fetchData((data: any) => {
-        if (data) setResult(data.quoteAmount);
-      }, `exchange?baseCurrency=${baseCurrency}&quoteCurrency=${quoteCurrency}&baseAmount=${amount}`);
+      fetchData(
+        setResult,
+        `exchange?baseCurrency=${baseCurrency}&quoteCurrency=${quoteCurrency}&baseAmount=${amount}`
+      );
   };
 
   return (
