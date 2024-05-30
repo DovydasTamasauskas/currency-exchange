@@ -1,4 +1,4 @@
-import { BASE_URL } from "./components/urls";
+import { BASE_URL } from "./const/urls";
 
 export const fetchData = (onSucces: (data: any) => void, params: string): any =>
   fetch(`${BASE_URL}/${params}`)
