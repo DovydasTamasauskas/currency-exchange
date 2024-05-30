@@ -9,7 +9,7 @@ const Input = ({
 }) => (
   <Button
     variant="contained"
-    sx={{ width: 300 }}
+    sx={{ width: 300, height: 55 }}
     onClick={onSubmit}
     disabled={isDisabled}
   >

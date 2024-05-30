@@ -7,7 +7,7 @@ const Container = ({ children }: { children: React.ReactNode }) => (
       p: 5,
       border: "1px dashed grey",
       boxShadow: 4,
-      backgroundColor: "#DBDFDF",
+      borderRadius: 2,
     }}
   >
     {children}
