@@ -7,21 +7,26 @@ import Container from "./components/Container";
 
 const App = () => {
   const [supportedCurrencies, setSupportedCurrencies] = useState<string[]>([]);
-  const [amount, setAmount] = useState<number>();
+  const [baseAmount, setBaseAmount] = useState<number>();
   const [baseCurrency, setBaseCurrency] = useState<string>();
   const [quoteCurrency, setQuoteCurrency] = useState<string>();
-  const [result, setResult] = useState<number>();
   const [isLoading, setIsLoading] = useState(false);
+  const [result, setResult] = useState<string>();
 
   useEffect(() => {
     fetchData(setSupportedCurrencies, `get/supported-currencies`, setIsLoading);
   }, []);
 
   const onSubmit = () => {
-    if (baseCurrency && quoteCurrency && amount && Number(amount))
+    if (baseCurrency && quoteCurrency && baseAmount && Number(baseAmount))
       fetchData(
-        setResult,
-        `exchange?baseCurrency=${baseCurrency}&quoteCurrency=${quoteCurrency}&baseAmount=${amount}`,
+        (quoteAmount) => {
+          setResult(
+            `${toCent(baseAmount)} ${baseCurrency} = 
+              ${toCent(quoteAmount)} ${quoteCurrency}`
+          );
+        },
+        `exchange?baseCurrency=${baseCurrency}&quoteCurrency=${quoteCurrency}&baseAmount=${baseAmount}`,
         setIsLoading
       );
   };
@@ -52,18 +57,18 @@ const App = () => {
             />
           </div>
           <div className="col-md-6 col-xs-12 d-flex justify-content-center">
-            <Input onChange={setAmount} isDisabled={isLoading} />
+            <Input onChange={setBaseAmount} isDisabled={isLoading} />
           </div>
           <div className="col-md-6 col-xs-12 d-flex justify-content-center">
             <Button onSubmit={onSubmit} isDisabled={isLoading} />
           </div>
         </div>
-        <h3 className="text-center mt-5">
-          {amount} {baseCurrency} = {result} {quoteCurrency}
-        </h3>
+        <h3 className="text-center mt-5">{result}</h3>
       </Container>
     </div>
   );
 };
+
+const toCent = (value: number) => (value / 100).toFixed(3);
 
 export default App;
