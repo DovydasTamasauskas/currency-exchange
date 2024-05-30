@@ -10,16 +10,18 @@ const App = () => {
   const [baseCurrency, setBaseCurrency] = useState<string>();
   const [quoteCurrency, setQuoteCurrency] = useState<string>();
   const [result, setResult] = useState<number>();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    fetchData(setSupportedCurrencies, `get/supported-currencies`);
+    fetchData(setSupportedCurrencies, `get/supported-currencies`, setIsLoading);
   }, []);
 
   const onSubmit = () => {
     if (baseCurrency && quoteCurrency && amount && Number(amount))
       fetchData(
         setResult,
-        `exchange?baseCurrency=${baseCurrency}&quoteCurrency=${quoteCurrency}&baseAmount=${amount}`
+        `exchange?baseCurrency=${baseCurrency}&quoteCurrency=${quoteCurrency}&baseAmount=${amount}`,
+        setIsLoading
       );
   };
 
@@ -34,6 +36,7 @@ const App = () => {
             )}
             onChange={setBaseCurrency}
             label={"BaseCurrency"}
+            isDisabled={isLoading}
           />
         </div>
         <div className="col-6 d-flex justify-content-center">
@@ -43,13 +46,14 @@ const App = () => {
             )}
             onChange={setQuoteCurrency}
             label={"QuoteCurrency"}
+            isDisabled={isLoading}
           />
         </div>
         <div className="col-6 d-flex justify-content-center">
-          <Input onChange={setAmount} />
+          <Input onChange={setAmount} isDisabled={isLoading} />
         </div>
         <div className="col-6 d-flex justify-content-center">
-          <Button onSubmit={onSubmit} />
+          <Button onSubmit={onSubmit} isDisabled={isLoading} />
         </div>
       </div>
       <h3 className="text-center mt-5">Result {result}</h3>

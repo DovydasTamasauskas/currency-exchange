@@ -5,10 +5,12 @@ const CurrencySelect = ({
   currencies,
   onChange,
   label,
+  isDisabled,
 }: {
   currencies: string[];
   onChange: (value: string) => void;
   label: string;
+  isDisabled: boolean;
 }) =>
   currencies && (
     <Autocomplete
@@ -19,6 +21,7 @@ const CurrencySelect = ({
       onChange={(e, value) => {
         value && onChange(value);
       }}
+      disabled={isDisabled}
     />
   );
 
