@@ -3,6 +3,7 @@ import { fetchData } from "./fetch";
 import CurrencySelect from "./components/Select";
 import Input from "./components/Input";
 import Button from "./components/Button";
+import Container from "./components/Container";
 
 const App = () => {
   const [supportedCurrencies, setSupportedCurrencies] = useState<string[]>([]);
@@ -27,6 +28,7 @@ const App = () => {
 
   return (
     <div className="container mt-5 overflow-hidden">
+      <Container>
       <h1 className="text-center mb-4">Currency Exchange</h1>
       <div className="row gy-3">
         <div className="col-6 d-flex justify-content-center">
@@ -56,7 +58,7 @@ const App = () => {
           <Button onSubmit={onSubmit} isDisabled={isLoading} />
         </div>
       </div>
-      <h3 className="text-center mt-5">Result {result}</h3>
+      </Container>
     </div>
   );
 };
