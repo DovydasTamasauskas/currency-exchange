@@ -23,15 +23,23 @@ const App = () => {
 
   return (
     <>
-      <CurrencySelect
-        currencies={supportedCurrencies}
-        onChange={setBaseCurrency}
-      />
-      <CurrencySelect
-        currencies={supportedCurrencies}
-        onChange={setQuoteCurrency}
-      />
-      <>Working...</>
+      <div className="container mt-5">
+        <h1 className="text-center mb-4">Currency Exchange</h1>
+        <div className="row ">
+          <div className="col-6 d-flex justify-content-center">
+            <CurrencySelect
+              currencies={supportedCurrencies}
+              onChange={setBaseCurrency}
+            />
+          </div>
+          <div className="col-6 d-flex justify-content-center">
+            <CurrencySelect
+              currencies={supportedCurrencies}
+              onChange={setQuoteCurrency}
+            />
+          </div>
+        </div>
+      </div>
     </>
   );
 };
