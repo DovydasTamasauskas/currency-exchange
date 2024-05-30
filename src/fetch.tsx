@@ -4,7 +4,7 @@ export const fetchData = (
   onSucces: (data: any) => void,
   params: string,
   setIsLoading: (data: boolean) => void
-): any => {
+): Promise<void | null> => {
   setIsLoading(true);
   return fetch(`${BASE_URL}/${params}`)
     .then((res) => res.json())
@@ -12,7 +12,7 @@ export const fetchData = (
     .then(onSucces)
     .then(() => setIsLoading(false))
     .catch((error) => {
+      setIsLoading(false);
       console.log(error);
-      return null;
     });
 };
