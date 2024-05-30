@@ -33,12 +33,14 @@ const App = () => {
             <CurrencySelect
               currencies={supportedCurrencies}
               onChange={setBaseCurrency}
+              label={"BaseCurrency"}
             />
           </div>
           <div className="col-6 d-flex justify-content-center">
             <CurrencySelect
               currencies={supportedCurrencies}
               onChange={setQuoteCurrency}
+              label={"QuoteCurrency"}
             />
           </div>
           <div className="col-6 d-flex justify-content-center">

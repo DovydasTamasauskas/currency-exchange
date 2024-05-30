@@ -4,21 +4,22 @@ import Autocomplete from "@mui/material/Autocomplete";
 const CurrencySelect = ({
   currencies,
   onChange,
+  label,
 }: {
   currencies: string[];
   onChange: (value: string) => void;
-}) => (
-  <Autocomplete
-    sx={{ width: 300 }}
-    options={currencies}
-    autoHighlight
-    renderInput={(params) => (
-      <TextField {...params} label="Choose a currency" />
-    )}
-    onChange={(e, value) => {
-      value && onChange(value);
-    }}
-  />
-);
+  label: string;
+}) =>
+  currencies && (
+    <Autocomplete
+      sx={{ width: 300 }}
+      options={currencies}
+      autoHighlight
+      renderInput={(params) => <TextField {...params} label={label} />}
+      onChange={(e, value) => {
+        value && onChange(value);
+      }}
+    />
+  );
 
 export default CurrencySelect;
